@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--The CSS styling-->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    
+    <div class="container">
+      <div class="input-navbar">
+        <input
+          type="text"
+          name=""
+          id="input-city"
+          placeholder="Enter City Name"
+        />
+      </div>
+      <div class="today">
+        <div class="location-summary">
+          <!-- <span class="location">_</span> -->
+          <span class="summary">_</span>
+        </div>
+        <div class="now">
+          <object
+            class="icon"
+            data="icons/not-available.svg"
+            type="image/svg+xml"
+          ></object>
+          <div class="widgets">
+            <div class="info">
+              <div class="box temp" data-value="N/A">
+                <img src="icons/thermometer-celsius.svg" alt="temp.svg" />
+              </div>
+              <div class="box wind" data-value="N/A">
+                <img src="icons/wind.svg" alt="wind.svg" />
+              </div>
+              <div class="box wind-gust" data-value="N/A">
+                <img src="icons/windsock.svg" alt="windsock.svg" />
+              </div>
+    
+              <div class="box direction" data-value="N/A">
+                <img src="icons/compass-custom.svg" alt="compass-custom.svg" />
+              </div>
+              <div class="box humidity" data-value="N/A">
+                <img src="icons/humidity.svg" alt="humidity.svg" />
+              </div>
+              <div class="box">
+                <img class="UV_Index" src="icons/uv-index.svg" alt="" />
+              </div>
+            </div>
+            <div class="sun-widget" data-sunrise ="" data-sunset ="">
+              <svg viewBox="0 0 140 140" class="day">
+                <circle cx="70" cy="25" r="96" shape-rendering="geometricPrecision" />
+                <circle class="line" cx="70" cy="25" r="96" shape-rendering="geometricPrecision" />
+              </svg>
+              <div class="dayIcon"><img src="" alt=""></div>
+            </div>
+          </div>
+          
+        </div>
+
+      </div>
+
+    </div>
+
+    <!--Linking the javascript code-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
+      integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>
