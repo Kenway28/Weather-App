@@ -17,10 +17,6 @@ let line = document.querySelector(".line");
 let dayIcon = document.querySelector(".dayIcon");
 
 let summary = document.querySelector(".summary");
-// let $sunrise = document.querySelector(".sunrise");
-// let $sunTime = document.querySelector(".sun-time");
-// let $sunIcon = document.querySelector(".sun-icon");
-
 let $icon = document.querySelector(".icon");
 let inputCity = document.querySelector("#input-city");
 
@@ -33,7 +29,6 @@ inputCity.addEventListener("keypress", (event) => {
 });
 
 window.addEventListener("load", () => {
-  getWeatherData("miliana");
 });
 
 function getWeatherData(cityName) {
@@ -55,7 +50,6 @@ function getWeatherData(cityName) {
 }
 
 function oneCallAPi(lat, lon) {
-  // console.log(`lat = ${lat} , lang = ${lon}`);
   const api = "d271d082c44757a9bce9c5910fb2ecd3";
   let lang = "pt_br";
   let units = "metric";
@@ -90,7 +84,6 @@ function oneCallAPi(lat, lon) {
         .utcOffset(timezone)
         .format("HH:mm");
       let sunrise = convertTime(data.current.sunrise * 1000, timezone);
-      console.log(setDateTime(sunrise, "ddd Do HH:mm"));
       let sunset = convertTime(data.current.sunset * 1000, timezone);
       let nextSunrise = convertTime(data.daily["1"].sunrise * 1000, timezone);
       counter = setInterval(() => {
@@ -104,11 +97,26 @@ function oneCallAPi(lat, lon) {
           $sunWidget.dataset.sunset = moment(nextSunrise).format("HH:mm");
           DayOrNight(currentTime, "night", sunset, nextSunrise);
         }
-        /******************* */
-        // console.log(
-        //   setDateTime(convertTime(data.timezone_offset), "ddd Do HH:mm")
-        // );
       }, 1000);
+      $week.innerHTML = "";
+      let oneWeek = Array.from(data.daily);
+      oneWeek.shift();
+      for (let i = 0; i <= oneWeek.length; i++) {
+        let box = document.createElement("div");
+        box.className = "box";
+        box.setAttribute("data-date", `${setDateTime(oneWeek[i].dt * 1000, "ddd")}`);
+        box.setAttribute(
+          "data-temp",
+          `${Math.round(oneWeek[i].temp.min)}°/${Math.round(
+            oneWeek[i].temp.max
+          )}°`
+        );
+        console.log(setDateTime(oneWeek[i].dt, "ddd Do"));
+        let img = document.createElement("img");
+        img.src = `icons/${oneWeek[i].weather["0"].icon}.svg`;
+        box.appendChild(img);
+        $week.appendChild(box);
+      }
     });
 }
 
@@ -118,13 +126,8 @@ function setDateTime(apiValue, format) {
 function convertTime(time, timeOffset) {
   // create Date object for current location
   var date = new Date();
-
   // convert to milliseconds, add local time zone offset and get UTC time in milliseconds
   var utcTime = time + date.getTimezoneOffset() * 60000;
-
-  // time offset for New Zealand is +12
-  // timeOffset /= 3600;
-
   // create new Date object for a different timezone using supplied its GMT offset.
   var NewTime = new Date(utcTime + 3600000 * timeOffset).getTime();
   return NewTime;
@@ -135,7 +138,6 @@ function DayOrNight(currentTime, period, periodStart, periodEnd) {
   let periodLength = periodEnd - periodStart;
   let timeGone = currentTime - periodStart;
   let offset = (timeGone * 301) / periodLength;
-  // console.log(offset);
   if (offset <= 301) {
     line.style.strokeDashoffset = 603 - offset;
     dayIcon.style.transform = `rotate(${(timeGone * 180) / periodLength}deg)`;
