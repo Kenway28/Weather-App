@@ -4,75 +4,81 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--The CSS styling-->
+    <title>Weather 5.0</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <div class="input-navbar">
-        <input
-          type="text"
-          name=""
-          id="input-city"
-          placeholder="Enter City Name"
-        />
-      </div>
-      <div class="now">
-        <span class="summary"></span>
-        <object
-          class="icon"
-          data="icons/not-available.svg"
-          type="image/svg+xml"
-        ></object>
-      </div>
-     
-      <div class="sun-widget" data-sunrise="" data-sunset="">
-        <svg viewBox="0 0 140 140" class="day">
-          <circle cx="70" cy="25" r="96" shape-rendering="geometricPrecision" />
-          <circle
-            class="line"
-            cx="70"
-            cy="25"
-            r="96"
-            shape-rendering="geometricPrecision"
-          />
-        </svg>
-        <div class="dayIcon"><img src="" alt="" /></div>
-      </div>
-      <div class="info">
-        <div class="box temp" data-value="N/A">
-          <img src="icons/thermometer-celsius.svg" alt="temp.svg" />
-        </div>
-        <div class="box wind" data-value="N/A">
-          <img src="icons/wind.svg" alt="wind.svg" />
-        </div>
-        <div class="box wind-gust" data-value="N/A">
-          <img src="icons/windsock.svg" alt="windsock.svg" />
-        </div>
+      <div class="current-weather">
+        <div class="section">
+          <div>
+            <input class="position" type="text" placeholder="Search" />
+            <strong class="main-temperature">_</strong>
+          </div>
+          <img class="main-icon" src="" alt="" />
 
-        <div class="box direction" data-value="N/A">
-          <img src="icons/compass-custom.svg" alt="compass-custom.svg" />
+
+
         </div>
-        <div class="box humidity" data-value="N/A">
-          <img src="icons/humidity.svg" alt="humidity.svg" />
+        <div class="section">
+          <div class="info-boxes">
+            <div class="box">
+              <i class="fa-solid fa-temperature-three-quarters"></i>
+              <span class="feels-like">_</span>
+            </div>
+            <div class="box">
+              <i class="fa-solid fa-wind"></i>
+              <span class="wind">_</span>
+            </div>
+            <div class="box">
+              <i class="fa-solid fa-tint"></i>
+              <span class="humidity">_</span>
+            </div>
+         
+            <div class="box">
+              <i class="fa-solid fa-sun"></i>
+              <span class="sunrise">_</span>
+            </div>
+            <div class="box">
+              <i class="fa-solid fa-moon"></i>
+              <span class="sunset">_</span>
+            </div>
+            <div class="box">
+              <i class="fa-regular fa-clock"></i>
+              <span class="clock">_</span>
+            </div>
+          </div>
+
         </div>
-        <div class="box">
-          <img class="UV_Index" src="icons/uv-index.svg" alt="" />
+        
+      </div>
+    
+      <div class="time-line">
+        <ul>
+          <li class="active">Today</li>
+          <li>Week</li>
+        </ul>
+        <div class="row-container">
+          <div class="row">  
+          </div>
+        </div>
+       
         </div>
       </div>
-      <div class="week"></div>
     </div>
-
-    <!--Linking the javascript code-->
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
-      integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.js"></script>
-
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment-with-locales.min.js"
+    integrity="sha512-vFABRuf5oGUaztndx4KoAEUVQnOvAIFs59y4tO0DILGWhQiFnFHiR+ZJfxLDyJlXgeut9Z07Svuvm+1Jv89w5g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
     <script src="js/script.js"></script>
   </body>
 </html>
