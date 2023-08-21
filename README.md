@@ -1,3 +1,7 @@
+#### Version 2.0
+
+- major redesign with simple ui
+
 #### Version 1.2
 
 - update user interface
